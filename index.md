@@ -15,6 +15,8 @@ D-BL offers a roof to a suite of projects and applications related to bobbin lac
 
 ### GroundForge
 GroundForge generates thread diagrams from pair diagrams and can use the pair diagrams as thread diagrams.
+It does not replace but complements existing lace ground [catalogues](/MAE-gf/docs/literature),
+helping to reduce the number of hand made samples for more variations.
 
 ![](images/thread-to-pairs-tothreads.png?align=right)
 * Galleries (traditional and experimental patterns)

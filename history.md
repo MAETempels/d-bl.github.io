@@ -43,7 +43,7 @@ The year-quarter notation is a rough indication. The dates of the assets are mor
   * Tutorials for a workshop at IOLI UnConn 2.0 hosted by _the lace museum_
   * birth of the nets page
 * **May 2022**:
-  * birth of the pdf/print friendly page
+  * Birth of the new color code and pdf/print friendly pages.
 * **January 2023**:
   * birth of the symmetry page
 * **Mid 2023**:

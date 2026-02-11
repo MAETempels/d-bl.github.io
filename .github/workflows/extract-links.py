@@ -48,32 +48,38 @@ for root, _, files in os.walk('.'):
                 parser.feed(f.read())
                 anchor_urls.update(parser.anchor_urls)
 
-with open('collected-urls.txt', 'w', encoding='utf-8') as out:
-    for url, anchors in sorted(anchor_urls.items()):
-        if anchors:
-            print(f"{url} #{' #'.join(sorted(anchors))}")
-        else:
-            print(f"{url}")
+print ("\nCollected URLs:\n")
+for url, anchors in sorted(anchor_urls.items()):
+    if anchors:
+        print(f"{url} #{' #'.join(sorted(anchors))}")
+    else:
+        print(f"{url}")
 
 print ("\nProblematic URLs:\n")
 for url, anchors in sorted(anchor_urls.items()):
     if not anchors:
-        response = requests.head(url, allow_redirects=True, timeout=5)
-        exists = response.status_code in (200, 301, 302)
-        if not exists:
-            print(f"{response.status_code} {url}")
+        try:
+            response = requests.head(url, allow_redirects=True, timeout=5)
+            exists = response.status_code in (200, 301, 302)
+            if not exists:
+                print(f"{response.status_code} {url}")
+        except Exception as e:
+            print(f"[ERROR: {e}] {url}")
         time.sleep(1.0) # be polite with server
 
 
-print ("\nMissing anchors:\n")
+print ("\nProblematic anchors:\n")
 for url, anchors in sorted(anchor_urls.items()):
     if anchors:
-        response = requests.get(url, allow_redirects=True)
-        if response.status_code != 200:
-            print(f"{response.status_code} {url}")
-        else:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            for anchor in anchors:
-                if not (soup.find(id=anchor) or soup.find(attrs={'name': anchor})):
-                    print(f"{url}#{anchor}")
+        try:
+            response = requests.get(url, allow_redirects=True)
+            if response.status_code != 200:
+                print(f"{response.status_code} {url}")
+            else:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                for anchor in anchors:
+                    if not (soup.find(id=anchor) or soup.find(attrs={'name': anchor})):
+                        print(f"{url}#{anchor}")
+        except Exception as e:
+            print(f"[ERROR: {e}] {url}")
         time.sleep(1.0) # be polite with server
