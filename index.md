@@ -31,6 +31,7 @@ helping to reduce the number of hand made samples for more variations.
     Connected in a plain way.
   * [Rose ground units](/MAE-gf/docs/droste#wobble) &mdash; Connected in a wobbling way.
   * [Valenciennes/Paris](/gw-lace-to-gf/#a7-h7g11--valenciennes)
+  * [Generate a list of random stitches](/GroundForge/random-stitches)
 * Advanced
   * [Design](/GroundForge/pattern) your own pattern from scratch
   * [Symmetrical patterns](/GroundForge/symmetry) from your own pattern snippet.
